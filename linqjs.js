@@ -102,20 +102,20 @@ Array.prototype.orderByDescending = function (key) {
 
 /**
  * Bypasses a specified number of elements in a sequence and then returns the remaining elements.
- * @param {number} amount
+ * @param {number} number
  * @returns {Array}
  */
-Array.prototype.skip = function (amount) {
-  return this.slice(amount);
+Array.prototype.skip = function (number) {
+  return this.slice(number);
 };
 
 /**
  * Returns a specified number of contiguous elements from the start of a sequence.
- * @param {number} amount
+ * @param {number} number
  * @returns {Array}
  */
-Array.prototype.take = function (amount) {
-  return this.slice(0, amount +1);
+Array.prototype.take = function (number) {
+  return this.slice(0, number);
 };
 
 /**
