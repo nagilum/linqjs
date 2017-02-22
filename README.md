@@ -103,6 +103,7 @@ Will produce:
 ## first
 
 Returns the first element of a sequence based on a predicate, or a null if the sequence contains no elements.
+I've combined first(), firstOrDefault(), single(), and singleOrDefault() into this one function, and all "fails" just return a null.
 
 Param: ```Function predicate```
 
