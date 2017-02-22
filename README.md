@@ -4,15 +4,16 @@ Some LINQ functionality for JavaScript Array
 
 Supplies the following functions for arrays:
 
-* ```all (predicate)``` Determines whether all elements of a sequence satisfy a condition.
-* ```any (predicate)``` Determines whether any element of a sequence satisfies a condition.
-* ```distinct ()``` Returns distinct elements from a sequence.
-* ```first (predicate)``` Returns the first element of a sequence based on a predicate, or a default value if the sequence contains no elements.
-* ```orderBy (key)``` Sorts the elements of a sequence in ascending order according to a key.
-* ```orderByDescending (key)``` Sorts the elements of a sequence in descending order.
-* ```skip (number)``` Bypasses a specified number of elements in a sequence and then returns the remaining elements.
-* ```take (number)``` Returns a specified number of contiguous elements from the start of a sequence.
-* ```where (predicate)``` Filters a sequence of values based on a predicate.
+* ```all```
+* ```any```
+* ```distinct```
+* ```first```
+* ```orderBy```
+* ```orderByDescending```
+* ```select```
+* ```skip```
+* ```take```
+* ```where```
 
 Say you have the following array:
 
@@ -22,11 +23,23 @@ let people = [
   { name: 'Genghis Khan', age: 65, isAlive: false, gender: 'M' },
   { name: 'Britney Spears', age: 35, isAlive: true, gender: 'F' },
   { name: 'Ada Lovelace', age: 36, isAlive: false, gender: 'F' },
+
+  // Yes I know she is added twice, it's for the distinct() call!
   { name: 'Ada Lovelace', age: 36, isAlive: false, gender: 'F' }
 ];
 ```
 
 ## all
+
+Determines whether all elements of a sequence satisfy a condition.
+
+Param: ```Function predicate```
+
+Returns: ```boolean```
+
+---
+
+Example:
 
 ```js
 let allIsAlive = people.all(x => x.isAlive);
@@ -40,6 +53,16 @@ false
 
 ## any
 
+Determines whether any element of a sequence satisfies a condition.
+
+Param: ```Function predicate```
+
+Returns: ```boolean```
+
+---
+
+Example:
+
 ```js
 let females = people.any(x => x.gender === 'F');
 ```
@@ -51,6 +74,16 @@ true
 ```
 
 ## distinct
+
+Returns distinct elements from a sequence.
+
+Param: *none*
+
+Returns: ```Array```
+
+---
+
+Example:
 
 ```js
 let distinctList = people.distinct();
@@ -68,6 +101,16 @@ Will produce:
 ```
 
 ## first
+
+Returns the first element of a sequence based on a predicate, or a null if the sequence contains no elements.
+
+Param: ```Function predicate```
+
+Returns: ```Object```
+
+---
+
+Examples:
 
 ```js
 let khan = people.first(x => x.name.endsWith('Khan'));
@@ -105,6 +148,16 @@ null
 
 ## orderBy
 
+Sorts the elements of a sequence in ascending order according to a key.
+
+Param: ```string key```
+
+Returns: ```Array```
+
+---
+
+Example:
+
 ```js
 let alphabetically = people.orderBy('name');
 ```
@@ -123,6 +176,16 @@ Will produce:
 
 ## orderByDescending
 
+Sorts the elements of a sequence in descending order.
+
+Param: ```string key```
+
+Returns: ```Array```
+
+---
+
+Example:
+
 ```js
 let unalphabetically = people.orderByDescending('name');
 ```
@@ -139,7 +202,48 @@ Will produce:
 ]
 ```
 
+## select
+
+Projects each element of a sequence into a new form.
+
+Param: ```Object map```
+
+Returns: ```Array```
+
+---
+
+Example:
+
+```js
+let firstNamesAndGender = people.select({
+  firstName: x => x.name.substr(0, x.name.indexOf(' ')),
+  gender: x => x.gender === 'M' ? 'Male' : 'Female'
+});
+```
+
+Will produce:
+
+```js
+[
+  { firstName: 'Barack', gender: 'Male' },
+  { firstName: 'Genghis', gender: 'Male' },
+  { firstName: 'Britney', gender: 'Female' },
+  { firstName: 'Ada', gender: 'Female' },
+  { firstName: 'Ada', gender: 'Female' }
+]
+```
+
 ## skip
+
+Bypasses a specified number of elements in a sequence and then returns the remaining elements.
+
+Param: ```int number```
+
+Returns: ```Array```
+
+---
+
+Example:
 
 ```js
 let skipped = people.skip(2);
@@ -157,6 +261,16 @@ Will produce:
 
 ## take
 
+Returns a specified number of contiguous elements from the start of a sequence.
+
+Param: ```int number```
+
+Returns: ```Array```
+
+---
+
+Example:
+
 ```js
 let taken = people.take(2);
 ```
@@ -172,6 +286,16 @@ Will produce:
 
 ## where
 
+Filters a sequence of values based on a predicate.
+
+Param: ```Function predicate```
+
+Returns: ```Array```
+
+---
+
+Example:
+
 ```js
 let wheres = people.where(x => x.age > 50);
 ```
@@ -186,6 +310,12 @@ Will produce:
 ```
 
 ## chains
+
+You can chain multiple functions as they're prototypes of the Array object.
+
+---
+
+Examples:
 
 ```js
 let names = people
