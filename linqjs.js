@@ -140,6 +140,27 @@ Array.prototype.orderByDescending = function (key) {
 };
 
 /**
+ * Projects each element of a sequence into a new form.
+ * @param {any} map
+ * @returns {Array}
+ */
+Array.prototype.select = function (map) {
+  let list = [];
+
+  this.forEach((item) => {
+    var obj = {};
+
+    for (let key in map) {
+      obj[key] = map[key](item);
+    }
+
+    list.push(obj);
+  });
+
+  return list;
+};
+
+/**
  * Bypasses a specified number of elements in a sequence and then returns the remaining elements.
  * @param {number} number
  * @returns {Array}

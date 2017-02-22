@@ -82,6 +82,20 @@ let unalphabetically = people.orderByDescending('name');
 console.log(unalphabetically);
 
 //
+// select
+//
+
+console.log('');
+console.log(' === select: first names  === ');
+
+let firstNames = people.select({
+  firstName: x => x.name.substr(0, x.name.indexOf(' ')),
+  gender: x => x.gender === 'M' ? 'Male' : 'Female'
+});
+
+console.log(firstNames);
+
+//
 // skip
 //
 
