@@ -4,6 +4,8 @@ Some LINQ functionality for JavaScript Array
 
 Supplies the following functions for arrays:
 
+* ```all (predicate)``` Determines whether all elements of a sequence satisfy a condition.
+* ```any (predicate)``` Determines whether any element of a sequence satisfies a condition.
 * ```first (predicate)``` Returns the first element of a sequence based on a predicate, or a default value if the sequence contains no elements.
 * ```orderBy (key)``` Sorts the elements of a sequence in ascending order according to a key.
 * ```orderByDescending (key)``` Sorts the elements of a sequence in descending order.
@@ -20,6 +22,30 @@ let people = [
   { name: 'Britney Spears', age: 35, isAlive: true, gender: 'F' },
   { name: 'Ada Lovelace', age: 36, isAlive: false, gender: 'F' }
 ];
+```
+
+## all
+
+```js
+let allIsAlive = people.all(x => x.isAlive);
+```
+
+Will produce:
+
+```js
+false
+```
+
+## any
+
+```js
+let females = people.any(x => x.gender === 'F');
+```
+
+Will produce:
+
+```js
+true
 ```
 
 ## first
