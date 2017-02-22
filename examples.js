@@ -103,9 +103,9 @@ console.log('');
 console.log(' === chains: is not alive and male === ');
 
 // Should produce Khan.
-let otherNames = people
+let otherPerson = people
   .where(x => !x.isAlive &&
               x.gender === 'M')
   .first();
 
-console.log(otherNames);
+console.log(otherPerson);

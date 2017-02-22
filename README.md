@@ -142,3 +142,18 @@ Will produce:
   { name: 'Britney Spears', age: 35, isAlive: true, gender: 'F' }
 ]
 ```
+
+---
+
+```js
+let otherPerson = people
+  .where(x => !x.isAlive &&
+              x.gender === 'M')
+  .first();
+```
+
+Will produce:
+
+```js
+{ name: 'Genghis Khan', age: 65, isAlive: false, gender: 'M' }
+```
