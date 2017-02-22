@@ -6,6 +6,7 @@ let people = [
   { name: 'Barack Obama', age: 55, isAlive: true, gender: 'M' },
   { name: 'Genghis Khan', age: 65, isAlive: false, gender: 'M' },
   { name: 'Britney Spears', age: 35, isAlive: true, gender: 'F' },
+  { name: 'Ada Lovelace', age: 36, isAlive: false, gender: 'F' },
   { name: 'Ada Lovelace', age: 36, isAlive: false, gender: 'F' }
 ];
 
@@ -36,6 +37,16 @@ console.log(' === any: gender: "F" === ');
 
 let females = people.any(x => x.gender === 'F');
 console.log(females);
+
+//
+// distinct
+//
+
+console.log('');
+console.log(' === distinct === ');
+
+let distinctList = people.distinct();
+console.log(distinctList);
 
 //
 // first
@@ -113,7 +124,7 @@ console.log(' === chains: order by "name", skip 1, take 2, age < 40 === ');
 // Should give an array with Britney.
 let names = people
   .orderBy('name')
-  .skip(1)
+  .skip(2)
   .take(2)
   .where(x => x.age < 40);
 

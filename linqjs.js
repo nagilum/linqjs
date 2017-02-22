@@ -19,6 +19,34 @@ Array.prototype.any = function (predicate) {
 };
 
 /**
+ * Returns distinct elements from a sequence.
+ * @returns {Array}
+ */
+Array.prototype.distinct = function () {
+  let list = [];
+
+  this.forEach((item) => {
+    let found = false;
+
+    list.forEach((it) => {
+      if (found) {
+        return;
+      }
+
+      if (JSON.stringify(it) === JSON.stringify(item)) {
+        found = true;
+      }
+    });
+
+    if (!found) {
+      list.push(item);
+    }
+  });
+
+  return list;
+};
+
+/**
  * Returns the first element of a sequence based on a predicate, or a default value if the sequence contains no elements.
  * @param {Function} predicate
  * @returns {Object}
@@ -36,18 +64,11 @@ Array.prototype.first = function (predicate) {
     return output;
   }
 
-  this.forEach((item) => {
-    if (output) {
-      return;
-    }
+  let list = this.filter((item) => predicate(item));
 
-    if (predicate(item)) {
-      output = item;
-      return;
-    }
-  });
-
-  return output;
+  return list.length > 0
+    ? list[0]
+    : null;
 };
 
 /**
