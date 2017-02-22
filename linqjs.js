@@ -1,6 +1,15 @@
 'use strict';
 
 /**
+ * Determines whether any element of a sequence satisfies a condition.
+ * @param {Function} predicate
+ * @returns {boolean}
+ */
+Array.prototype.any = function (predicate) {
+  return this.filter((item) => predicate(item)).length > 0;
+};
+
+/**
  * Returns the first element of a sequence based on a predicate, or a default value if the sequence contains no elements.
  * @param {Function} predicate
  * @returns {Object}

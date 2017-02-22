@@ -18,6 +18,16 @@ console.log(' === original list === ');
 console.log(people);
 
 //
+// any
+//
+
+console.log('');
+console.log(' === any: gender: "F" === ');
+
+let females = people.any(x => x.gender === 'F');
+console.log(females);
+
+//
 // first
 //
 
