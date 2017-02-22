@@ -72,6 +72,18 @@ Will produce:
 { name: 'Barack Obama', age: 55, isAlive: true, gender: 'M' }
 ```
 
+---
+
+```js
+let nonExisting = people.first(x => x.age === 100);
+```
+
+Will produce:
+
+```js
+null
+```
+
 ## orderBy
 
 ```js
