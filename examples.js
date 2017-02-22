@@ -18,6 +18,16 @@ console.log(' === original list === ');
 console.log(people);
 
 //
+// all
+//
+
+console.log('');
+console.log(' === all: is alive === ');
+
+let allIsAlive = people.all(x => x.isAlive);
+console.log(allIsAlive);
+
+//
 // any
 //
 

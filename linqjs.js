@@ -1,6 +1,15 @@
 'use strict';
 
 /**
+ * Determines whether all elements of a sequence satisfy a condition.
+ * @param {Function} predicate
+ * @returns {boolean}
+ */
+Array.prototype.all = function (predicate) {
+  return this.filter((item) => predicate(item)).length === this.length;
+};
+
+/**
  * Determines whether any element of a sequence satisfies a condition.
  * @param {Function} predicate
  * @returns {boolean}
