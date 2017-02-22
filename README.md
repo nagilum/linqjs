@@ -25,7 +25,19 @@ let people = [
 ## first
 
 ```js
-let obama = people.first(x => x.name.endsWith('Obama'));
+let khan = people.first(x => x.name.endsWith('Khan'));
+```
+
+Will produce:
+
+```js
+{ name: 'Genghis Khan', age: 65, isAlive: false, gender: 'M' }
+```
+
+---
+
+```js
+let obama = people.first();
 ```
 
 Will produce:
