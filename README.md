@@ -98,8 +98,6 @@ Will produce:
   { name: 'Genghis Khan', age: 65, isAlive: false, gender: 'M' },
   { name: 'Britney Spears', age: 35, isAlive: true, gender: 'F' },
   { name: 'Ada Lovelace', age: 36, isAlive: false, gender: 'F' },
-
-  // Yes I know she is added twice, it's for the distinct() call!
   { name: 'Ada Lovelace', age: 36, isAlive: false, gender: 'F' }
 ]
 ```
