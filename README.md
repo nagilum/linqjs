@@ -6,6 +6,7 @@ Supplies the following functions for arrays:
 
 * ```all```
 * ```any```
+* ```copy```
 * ```distinct```
 * ```first```
 * ```orderBy```
@@ -71,6 +72,36 @@ Will produce:
 
 ```js
 true
+```
+
+## copy
+
+Make an exact copy of the array, not a reference.
+
+Param *none*
+
+Returns: ```Array```
+
+---
+
+Example:
+
+```js
+let copiedList = people.copy();
+```
+
+Will produce:
+
+```js
+[
+  { name: 'Barack Obama', age: 55, isAlive: true, gender: 'M' },
+  { name: 'Genghis Khan', age: 65, isAlive: false, gender: 'M' },
+  { name: 'Britney Spears', age: 35, isAlive: true, gender: 'F' },
+  { name: 'Ada Lovelace', age: 36, isAlive: false, gender: 'F' },
+
+  // Yes I know she is added twice, it's for the distinct() call!
+  { name: 'Ada Lovelace', age: 36, isAlive: false, gender: 'F' }
+]
 ```
 
 ## distinct

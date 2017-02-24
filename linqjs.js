@@ -6,7 +6,7 @@
  * @returns {boolean}
  */
 Array.prototype.all = function (predicate) {
-  return this.filter((item) => predicate(item)).length === this.length;
+  return this.where(predicate).length === this.length;
 };
 
 /**
@@ -15,7 +15,21 @@ Array.prototype.all = function (predicate) {
  * @returns {boolean}
  */
 Array.prototype.any = function (predicate) {
-  return this.filter((item) => predicate(item)).length > 0;
+  return this.where(predicate).length > 0;
+};
+
+/**
+ * Make an exact copy of the array.
+ * @returns {Array}
+ */
+Array.prototype.copy = function () {
+  var list = [];
+
+  this.forEach((item) => {
+    list.push(item);
+  });
+
+  return list;
 };
 
 /**
@@ -128,15 +142,10 @@ Array.prototype.orderBy = function (key) {
  * @returns {Array}
  */
 Array.prototype.orderByDescending = function (key) {
-  let list = [];
-
-  this
+  return this
     .orderBy(key)
-    .forEach((item) => {
-      list.push(item);
-    });
-  
-  return list.reverse();
+    .copy()
+    .reverse();
 };
 
 /**
