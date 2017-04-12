@@ -37,10 +37,10 @@ Array.prototype.copy = function () {
  * @returns {Array}
  */
 Array.prototype.distinct = function () {
-  let list = [];
+  var list = [];
 
   this.forEach((item) => {
-    let found = false;
+    var found = false;
 
     list.forEach((it) => {
       if (found) {
@@ -78,7 +78,7 @@ Array.prototype.first = function (predicate) {
     return output;
   }
 
-  let list = this.filter((item) => predicate(item));
+  var list = this.filter((item) => predicate(item));
 
   return list.length > 0
     ? list[0]
@@ -91,19 +91,19 @@ Array.prototype.first = function (predicate) {
  * @returns {Array}
  */
 Array.prototype.orderBy = function (key) {
-  let list = [];
+  var list = [];
 
   this.forEach((item) => {
     list.push(item);
   });
 
-  let item = list.length > 0 ? list[0] : null;
+  var item = list.length > 0 ? list[0] : null;
   
   if (!item) {
     return list;
   }
 
-  let value = item[key],
+  var value = item[key],
       type = typeof(value);
 
   if (type === 'undefined') {
@@ -154,7 +154,7 @@ Array.prototype.orderByDescending = function (key) {
  * @returns {Array}
  */
 Array.prototype.select = function (map) {
-  let list = [];
+  var list = [];
 
   this.forEach((item) => {
     var obj = {};
